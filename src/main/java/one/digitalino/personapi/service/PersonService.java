@@ -1,32 +1,35 @@
 package one.digitalino.personapi.service;
 
-import one.digitalino.personapi.dto.MessageResponseDTO;
+import lombok.AllArgsConstructor;
+import one.digitalino.personapi.dto.request.PersonDTO;
+import one.digitalino.personapi.dto.response.MessageResponseDTO;
 import one.digitalino.personapi.entity.Person;
+import one.digitalino.personapi.mapper.PersonMapper;
 import one.digitalino.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
 
-    @Autowired
-    public PersonService(PersonRepository personRepository){
-        this.personRepository = personRepository;
+    private final PersonMapper personMapper = PersonMapper.INSTANCE;
+
+    public MessageResponseDTO createPerson(PersonDTO personDTO) {
+
+        Person person = personMapper.toModel(personDTO);
+        Person savedPerson = personRepository.save(person);
+
+        MessageResponseDTO messageResponse = createMessageResponse("Person successfully created with ID ", savedPerson.getId());
+
+        return messageResponse;
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createPerson(Person person){
-        Person savePerson = personRepository.save(person);
-        return MessageResponseDTO
-                .builder()
-                .message("Created person with ID "+savePerson.getId())
+    private MessageResponseDTO createMessageResponse(String s, Long id2) {
+        return MessageResponseDTO.builder()
+                .message(s + id2)
                 .build();
     }
 
