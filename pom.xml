@@ -79,15 +79,35 @@
 	</dependencies>
 
 	<build>
+
 		<plugins>
+
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>3.0.3</version>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
+
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals><goal>compile</goal></goals>
+
+					</execution>
+				</executions>
+
 				<configuration>
+
 					<source>11</source> <!-- depending on your project -->
 					<target>11</target> <!-- depending on your project -->
+
 					<annotationProcessorPaths>
+
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
@@ -99,8 +119,13 @@
 							<version>${org.mapstruct.version}</version>
 						</path>
 
+
 						<!-- other annotation processors -->
 					</annotationProcessorPaths>
+
+
+
+
 				</configuration>
 			</plugin>
 		</plugins>

@@ -44,22 +44,7 @@ public class PersonServiceTest {
         assertEquals("Person successfully created with ID 1", successMessage.getMessage());
     }
 
-    @Test
-    void testGivenValidPersonIdThenReturnThisPerson() throws PersonNotFoundException {
-        PersonDTO expectedPersonDTO = createFakeDTO();
-        Person expectedSavedPerson = createFakeEntity();
-        expectedPersonDTO.setId(expectedSavedPerson.getId());
 
-        when(personRepository.findById(expectedSavedPerson.getId())).thenReturn(Optional.of(expectedSavedPerson));
-
-
-        PersonDTO personDTO = personService.findById(expectedSavedPerson.getId());
-
-        assertEquals(expectedPersonDTO, personDTO);
-
-        assertEquals(expectedSavedPerson.getId(), personDTO.getId());
-        assertEquals(expectedSavedPerson.getFirstName(), personDTO.getFirstName());
-    }
 
     @Test
     void testGivenInvalidPersonIdThenThrowException() {
