@@ -19,7 +19,6 @@ import java.util.List;
 public class PersonController {
 
     private final PersonService personService;
-    private PersonService personService1;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -33,7 +33,7 @@ public class PersonDTO {
     @CPF
     private String cpf;
 
-
+    @NotNull
     private String birthDate;
 
     @Valid
