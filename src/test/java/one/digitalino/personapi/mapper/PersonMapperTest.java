@@ -1,5 +1,6 @@
 package one.digitalino.personapi.mapper;
 
+import one.digitalino.personapi.dto.mapper.PersonMapper;
 import one.digitalino.personapi.dto.request.PersonDTO;
 import one.digitalino.personapi.dto.request.PhoneDTO;
 import one.digitalino.personapi.entity.Person;

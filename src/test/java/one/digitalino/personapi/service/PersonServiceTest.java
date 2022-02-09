@@ -4,7 +4,7 @@ import one.digitalino.personapi.dto.request.PersonDTO;
 import one.digitalino.personapi.dto.response.MessageResponseDTO;
 import one.digitalino.personapi.entity.Person;
 import one.digitalino.personapi.exception.PersonNotFoundException;
-import one.digitalino.personapi.mapper.PersonMapper;
+import one.digitalino.personapi.dto.mapper.PersonMapper;
 import one.digitalino.personapi.repository.PersonRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

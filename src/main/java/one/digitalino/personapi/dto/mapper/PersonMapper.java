@@ -1,4 +1,4 @@
-package one.digitalino.personapi.mapper;
+package one.digitalino.personapi.dto.mapper;
 
 import one.digitalino.personapi.dto.request.PersonDTO;
 import one.digitalino.personapi.entity.Person;
@@ -8,7 +8,6 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
-
 
     PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
 
